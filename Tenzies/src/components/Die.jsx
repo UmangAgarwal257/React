@@ -2,7 +2,7 @@
 export default function Die({ value, isHeld }) {
   return (
     <>
-      <button style={{ backgroundColor: isHeld ? "green" : undefined }}>
+      <button style={{ backgroundColor: isHeld ? "lightgreen" : undefined }}>
         {value}
       </button>
     </>
