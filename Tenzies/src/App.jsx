@@ -2,6 +2,7 @@ import { useState } from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   const [dice, setDice] = useState(() => generateAllNewDice());
@@ -60,6 +61,7 @@ export default function App() {
       <button className="roll-dice" onClick={rollDice}>
         {gameWon ? "New Game" : "Roll Dice"}
       </button>
+      <Analytics />
     </main>
   );
 }
