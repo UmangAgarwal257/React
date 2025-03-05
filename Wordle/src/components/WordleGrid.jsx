@@ -1,4 +1,5 @@
 const getLetterStatus = (letter, index, correctWord) => {
+  if (!letter) return "bg-gray-200 dark:bg-gray-700";
   if (correctWord[index] === letter) return "bg-green-500";
   if (correctWord.includes(letter)) return "bg-yellow-500";
   return "bg-gray-500";
@@ -17,12 +18,14 @@ const WordleGrid = ({ guesses, currentGuess, correctWord }) => {
               const letter = word[colIndex] || "";
               const bgColor = guesses[rowIndex]
                 ? getLetterStatus(letter, colIndex, correctWord)
-                : "bg-white";
+                : getLetterStatus(letter, colIndex, correctWord);
 
               return (
                 <div
                   key={colIndex}
-                  className={`w-14 h-14 flex items-center justify-center border-2 text-2xl font-bold uppercase ${bgColor} text-white`}
+                  className={`w-14 h-14 flex items-center justify-center border-2 border-gray-300 dark:border-gray-600 text-2xl font-bold uppercase ${bgColor} ${
+                    letter ? "text-white" : "text-gray-400 dark:text-gray-500"
+                  } transition-colors duration-300`}
                 >
                   {letter}
                 </div>
