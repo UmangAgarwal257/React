@@ -62,6 +62,7 @@ export default function App() {
         {gameWon ? "New Game" : "Roll Dice"}
       </button>
       <Analytics />
+      <footer className="footer">Made with ❤️ by Umang</footer>
     </main>
   );
 }
