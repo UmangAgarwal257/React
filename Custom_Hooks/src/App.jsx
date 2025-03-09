@@ -1,19 +1,28 @@
 import { useRef } from "react";
+import { useState } from "react";
 
 function App() {
-  const inputRef = useRef();
+  const [currentCount, setCurrentCount] = useState(0);
+  const timer = useRef();
 
-  function focusOnInput() {
-    inputRef.current.focus();
+  function startCount() {
+    let value = setInterval(() => {
+      setCurrentCount((prev) => prev + 1);
+    }, 1000);
+    timer.current = value;
+  }
+
+  function stopCount() {
+    clearInterval(timer.current);
   }
 
   return (
     <>
       <div>
-        <h1>Sign Up</h1>
-        <input ref={inputRef} type="text" />
-        <input type="text" />
-        <button onClick={focusOnInput}>Submit</button>
+        {currentCount}
+        <br />
+        <button onClick={startCount}>Start</button>
+        <button onClick={stopCount}>Stop</button>
       </div>
     </>
   );
