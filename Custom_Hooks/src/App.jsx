@@ -1,28 +1,31 @@
-import { useRef } from "react";
 import { useState } from "react";
 
+function useCounter() {
+  const [count, setcount] = useState(0);
+
+  function increaseCount() {
+    setcount((prevCount) => prevCount + 1);
+  }
+  return {
+    count: count,
+    increaseCount: increaseCount,
+  };
+}
+
 function App() {
-  const [currentCount, setCurrentCount] = useState(0);
-  const timer = useRef();
+  const { count, increaseCount } = useCounter();
 
-  function startCount() {
-    let value = setInterval(() => {
-      setCurrentCount((prev) => prev + 1);
-    }, 1000);
-    timer.current = value;
-  }
-
-  function stopCount() {
-    clearInterval(timer.current);
-  }
+  // function decreaseCount() {
+  //   setcount((prevCount) => prevCount - 1);
+  // }
 
   return (
     <>
       <div>
-        {currentCount}
+        {count}
         <br />
-        <button onClick={startCount}>Start</button>
-        <button onClick={stopCount}>Stop</button>
+        <button onClick={increaseCount}>increase</button>
+        {/* <button onClick={decreaseCount}>decrease</button> */}
       </div>
     </>
   );
