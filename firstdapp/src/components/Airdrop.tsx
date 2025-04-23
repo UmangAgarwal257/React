@@ -30,7 +30,7 @@ export const Airdrop = () => {
   return (
     <div>
       <input
-        type="number"
+        type="text"
         placeholder="Amount"
         value={amount}
         onChange={handleAmountChange}
